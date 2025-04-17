@@ -1,8 +1,8 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import Image from "next/image";
 import Link from "next/link";
-import { SearchInput } from "../home-navbar/search-input";
-import { AuthButton } from "@/app/modules/auth/ui/components/auth-button";
+import { SearchInput } from "./search-input";
+import { AuthButton } from "@/modules/auth/ui/components/auth-button";
 
 const HomeNavbar = () => {
   return (

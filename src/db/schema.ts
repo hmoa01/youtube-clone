@@ -45,6 +45,12 @@ export const videos = pgTable("videos", {
   id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").notNull(),
   description: text("description"),
+  muxStatus: text("mux_status"), // max status is the status of the video when it is uploaded
+  muxAssetId: text("mux_asset_id").unique(), // mux asset id is the id of the video in mux
+  muxUploadId: text("mux_upload_id").unique(), // mux upload id is the id of the upload in mux
+  muxPlaybackId: text("mux_playback_id").unique(), // mux playback id is the id of the playback in mux
+  muxTrackId: text("mux_track_id").unique(), // mux track id is the id of the track in mux
+  muxTrackStatus: text("mux_track_status"), // mux track status is the status of the track in mux
   userId: uuid("user_id")
     .references(() => users.id, { onDelete: "cascade" }) // onDelete: "cascade" means if the user is deleted, all their videos are deleted too
     .notNull(),

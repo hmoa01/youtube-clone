@@ -5,6 +5,8 @@ import {
   text,
   timestamp,
   uniqueIndex,
+  integer,
+  pgEnum,
 } from "drizzle-orm/pg-core";
 
 export const users = pgTable(
@@ -41,6 +43,11 @@ export const categoryRelations = relations(categories, ({ many }) => ({
   videos: many(videos),
 }));
 
+export const videoVisibility = pgEnum("video_visibility", [
+  "private",
+  "public",
+]);
+
 export const videos = pgTable("videos", {
   id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").notNull(),
@@ -51,6 +58,10 @@ export const videos = pgTable("videos", {
   muxPlaybackId: text("mux_playback_id").unique(), // mux playback id is the id of the playback in mux
   muxTrackId: text("mux_track_id").unique(), // mux track id is the id of the track in mux
   muxTrackStatus: text("mux_track_status"), // mux track status is the status of the track in mux
+  thumbnailUrl: text("thumbnail_url"), // thumbnail url is the url of the thumbnail of the video
+  previewUrl: text("preview_url"), // preview url is the url of the preview of the video
+  duration: integer("duration").default(0).notNull(), // duration is the duration of the video in seconds
+  visibility: videoVisibility("visibility").default("private").notNull(), // visibility is the visibility of the video
   userId: uuid("user_id")
     .references(() => users.id, { onDelete: "cascade" }) // onDelete: "cascade" means if the user is deleted, all their videos are deleted too
     .notNull(),

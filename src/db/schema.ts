@@ -64,7 +64,9 @@ export const videos = pgTable("videos", {
   muxTrackId: text("mux_track_id").unique(), // mux track id is the id of the track in mux
   muxTrackStatus: text("mux_track_status"), // mux track status is the status of the track in mux
   thumbnailUrl: text("thumbnail_url"), // thumbnail url is the url of the thumbnail of the video
+  thumbnailKey: text("thumbnail_key"), // thumbnail key is the key of the thumbnail in mux
   previewUrl: text("preview_url"), // preview url is the url of the preview of the video
+  previewKey: text("preview_key"), // preview key is the key of the preview in mux
   duration: integer("duration").default(0).notNull(), // duration is the duration of the video in seconds
   visibility: videoVisibility("visibility").default("private").notNull(), // visibility is the visibility of the video
   userId: uuid("user_id")

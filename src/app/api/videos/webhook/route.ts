@@ -108,8 +108,6 @@ export const POST = async (request: Request) => {
         });
       }
 
-      console.log(uploadedPreview.data, uploadedThumbnail.data);
-
       const { key: thumbnailKey, ufsUrl: thumbnailUrl } =
         uploadedThumbnail.data;
       const { key: previewKey, ufsUrl: previewUrl } = uploadedPreview.data;

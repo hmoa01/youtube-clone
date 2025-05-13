@@ -8,7 +8,6 @@ import { VideoPlayer } from "../components/video-player";
 import { VideoBanner } from "../components/video-banner";
 import { VideoTopRow } from "../components/video-top-row";
 import { useAuth } from "@clerk/nextjs";
-import { TRPCClientError } from "@trpc/client";
 
 interface VideoSectionProps {
   videoId: string;
@@ -30,12 +29,6 @@ const VideoSectionSuspense = ({ videoId }: VideoSectionProps) => {
   const utils = trpc.useUtils();
   const [video] = trpc.videos.getOne.useSuspenseQuery({ id: videoId });
   const createView = trpc.videoViews.create.useMutation({
-    onError: (error) => {
-      console.error("Mutation error:", error);
-      if (error instanceof TRPCClientError) {
-        console.error("TRPC Error Details:", error.message, error.data);
-      }
-    },
     onSuccess: () => {
       utils.videos.getOne.invalidate({ id: videoId });
     },

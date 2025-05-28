@@ -25,9 +25,9 @@ interface FilterCarouselProps {
 
 export const FilterCarousel = ({
   value,
+  isLoading,
   onSelect,
   data,
-  isLoading,
 }: FilterCarouselProps) => {
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [current, setCurrent] = useState(0);
@@ -69,7 +69,7 @@ export const FilterCarousel = ({
               className="pl-3 basis-auto"
             >
               <Badge
-                variant={value === null ? "default" : "secondary"}
+                variant={!value ? "default" : "secondary"}
                 className="rounded-kg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
               >
                 All
@@ -92,8 +92,8 @@ export const FilterCarousel = ({
                 className="pl-3 basis-auto"
               >
                 <Badge
-                  variant={value === null ? "default" : "secondary"}
-                  className="rounded-kg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
+                  variant={value === item.value ? "default" : "secondary"}
+                  className="rounded-lg px-3 py-1 cursor-pointer whitespace-nowrap text-sm"
                 >
                   {item.label}
                 </Badge>

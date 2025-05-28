@@ -6,7 +6,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { VideoGridCard } from "@/modules/videos/ui/components/video-grid-card";
 import { VideoRowCard } from "@/modules/videos/ui/components/video-row-card";
 import { trpc } from "@/trpc/client";
-import { is } from "drizzle-orm";
 
 interface ResultsSectionProps {
   query: string | undefined;

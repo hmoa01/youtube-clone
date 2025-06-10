@@ -99,7 +99,7 @@ export const VideoRowCard = ({
 
   return (
     <div className={videoRowCardVariants({ size })}>
-      <Link href={`/videos,${data.id}`} className={thumbnailVariants({ size })}>
+      <Link href={`/videos/${data.id}`} className={thumbnailVariants({ size })}>
         <VideoThumbnail
           imageURL={data.thumbnailUrl}
           previewURL={data.previewUrl}

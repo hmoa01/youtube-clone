@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { APP_URL } from "@/constants";
-import { PlaylistAddModal } from "@/modules/playlists/server/ui/components/playlist-add-modal";
+import { PlaylistAddModal } from "@/modules/playlists/ui/components/playlist-add-modal";
 import {
   ListPlusIcon,
   MoreVerticalIcon,
